@@ -1,72 +1,98 @@
 import bikerjacketfront from '../assets/Images/bikerjacketfront.png';
-import bikerjackerback from '../assets/Images/bikerjackerback.png';
+import bikerjacketback from '../assets/Images/bikerjacketback.png';
+import bikerjacket2back from '../assets/Images/bikerjacket2back.png';
+import bikerjacket2front from '../assets/Images/bikerjacket2front.png';
 import capfront from '../assets/Images/capfront.png';
 import capback from '../assets/Images/capback.png';
-import backpackfront from '../assets/Images/backpackfront.png';
-import backpackback from '../assets/Images/backpackback.png';
-import glassesfront from '../assets/Images/glassesfront.png';
-import glassesback from '../assets/Images/glassesback.png';
-import smartwatchfront from '../assets/Images/smartwatchfront.png';
-import smartwatchback from '../assets/Images/smartwatchback.png';
-import earpodsfront from '../assets/Images/earpodsfront.png';
-import earpodsback from '../assets/Images/earpodsback.png';
 import shorts1front from '../assets/Images/shorts1front.png';
 import shorts1back from '../assets/Images/shorts1back.png';
 import pants1front from '../assets/Images/pants1front.png';
 import pants1back from '../assets/Images/pants1back.png';
+import xtxverityfront from '../assets/Images/xtxverityfront.png';
+import xtxverityback from '../assets/Images/xtxverityback.png';
+import xtxproverityfront from '../assets/Images/xtxproverityfront.png';
+import xtxproverityback from '../assets/Images/xtxproverityback.png';
+import abxfiitsneakersfront from '../assets/Images/abxfiitsneakersfront.png';
+import abxfiitsneakersback from '../assets/Images/abxfiitsneakersback.png';
+import abxfiitrunningtshirtfront from '../assets/Images/abxfiitrunningtshirtfront.png';
+import abxfiitrunningtshirtback from '../assets/Images/abxfiitrunningtshirtback.png';
+import abxfiitleggingsfront from '../assets/Images/abxfiitleggingsfront.png';
+import abxfiitleggingsback from '../assets/Images/abxfiitleggingsback.png';
+import abxfiitworkoutcropfront from '../assets/Images/abxfiitworkoutcropfront.png';
+import abxfiitworkoutcropback from '../assets/Images/abxfiitworkoutcropback.png';
+import abxtrackvisionprosfront from '../assets/Images/abxtrackvisionprosfront.png';
+import abxtrackvisionprosback from '../assets/Images/abxtrackvisionprosback.png';
+import abxcyberhat1front from '../assets/Images/abxcyberhat1front.png';
+import abxcyberhat1back from '../assets/Images/abxcyberhat1back.png';
+import abxcyberpackerfront from '../assets/Images/abxcyberpackerfront.png';
+import abxcyberpackerback from '../assets/Images/abxcyberpackerback.png';
 
-import nutty from '../assets/Images/nutty.jpg';
 import paul from '../assets/Images/paul.jpg';
-import nyasha from '../assets/Images/nyasha.jpg';
-import martin from '../assets/Images/martin.jpg';
-
-import nuttyscard from '../assets/Images/nuttyscard.png';
-import paulscard from '../assets/Images/paulscard.png';
-import nyashascard from '../assets/Images/nyashascard.png';
-import martinscard from '../assets/Images/martinscard.png';
-
-import nyashashead from '../assets/Images/nyashashead.png';
-import nyashasbody from '../assets/Images/nyashasbody.png';
-import martinshead from '../assets/Images/martinshead.png';
-import martinsbody from '../assets/Images/martinsbody.png';
 import nuttyshead from '../assets/Images/nuttyshead.png';
 import nuttysbody from '../assets/Images/nuttysbody.png';
 import paulshead from '../assets/Images/paulshead.png';
 import paulsbody from '../assets/Images/paulsbody.png';
-import tatendashead from '../assets/Images/tatendashead.png';
-import tatendasbody from '../assets/Images/tatendasbody.png';
+import michaelsbody from '../assets/Images/michaelsbody.png';
+import michaelshead from '../assets/Images/michaelshead.png';
+import nutty from '../assets/Images/nutty.jpeg';
+import michael from '../assets/Images/michael.png';
+import partnersbackground from '../assets/Images/partnersbackground.png';
+import sportstakelabslogo from '../assets/Images/sportstakelabslogo.png';
+import sportstakelabspattern from '../assets/Images/sportstakelabspattern.png';
+import xtxcodeprosoundsfront from '../assets/Images/xtxcodeprosoundsfront.png';
+import xtxcodeprosoundsback from '../assets/Images/xtxcodeprosoundsback.png';
 
 export {
-  nyashashead,
-  nyashasbody,
-  martinshead,
-  martinsbody,
+  sportstakelabslogo,
+  sportstakelabspattern,
+  partnersbackground,
+};
+
+export {
+  nutty,
+  paul,
+  michael,
+};
+
+export {
   nuttyshead,
   nuttysbody,
   paulshead,
   paulsbody,
-  tatendashead,
-  tatendasbody
+  michaelsbody,
+  michaelshead,
 };
-
-
-export { nutty, paul, nyasha, martin, nuttyscard, paulscard, nyashascard, martinscard };
 
 export { 
   bikerjacketfront,
-  bikerjackerback,
+  bikerjacketback,
+  bikerjacket2front,
+  bikerjacket2back,
   capfront,
   capback,
-  backpackfront,
-  backpackback,
-  glassesfront,
-  glassesback,
-  smartwatchfront,
-  smartwatchback,
-  earpodsfront,
-  earpodsback,
   shorts1front,
   shorts1back,
   pants1front,
-  pants1back
+  pants1back,
+  xtxverityfront,
+  xtxverityback,
+  xtxproverityfront,
+  xtxproverityback,
+  abxfiitsneakersfront,
+  abxfiitsneakersback,
+  abxfiitrunningtshirtfront,
+  abxfiitrunningtshirtback,
+  abxfiitleggingsfront,
+  abxfiitleggingsback,
+  abxfiitworkoutcropfront,
+  abxfiitworkoutcropback,
+  abxtrackvisionprosfront,
+  abxtrackvisionprosback,
+  abxcyberhat1front,
+  abxcyberhat1back,
+  abxcyberpackerfront,
+  abxcyberpackerback,
+    xtxcodeprosoundsfront,
+  xtxcodeprosoundsback,
  };
+

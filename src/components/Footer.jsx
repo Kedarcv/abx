@@ -1,5 +1,3 @@
-// Footer.jsx
-
 export default function Footer() {
   return (
     <footer className="bg-black text-white mt-12 w-full">

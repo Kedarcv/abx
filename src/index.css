@@ -2,13 +2,6 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Monument Extended";
-  src: url("/fonts/MonumentExtended-Regular.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "Cyberform Demo";
   src: url("./assets/fonts/CyberformDemo.otf") format("opentype");
   font-weight: normal;

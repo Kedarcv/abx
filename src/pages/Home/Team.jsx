@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink } from "lucide-react";
 
@@ -7,51 +7,60 @@ import {
   nuttysbody,
   paulshead,
   paulsbody,
-  tatendashead,
-  tatendasbody,
+  michaelshead,
+  michaelsbody,
+  nutty,
+  paul,
+  michael,
 } from "../../constants/index.js";
 
 const teamData = [
   {
     id: "nutty",
     name: "Nutty O",
-    role: "Co-Founder / Creative Director",
-    focus: "Artistic Vision & Brand Identity",
-    bio: 'In his capacity as Creative Director, Carrington "Nutty O" Chiwadzwa spearheads the brand\'s artistic direction. Drawing from his award-winning career and his "Ability Xtention" (ABX) philosophy, he ensures that every project reflects a commitment to innovation and creative excellence, pushing the boundaries of the brand\'s visual and sonic identity.',
+    role: "Visionary",
+    focus: "Brand Identity",
+    bio: 'A multi award winning musician and consistent chart topper, Carrington "Nutty O" Chiwadzwa spearheads the brand\'s artistic direction. Drawing from his award-winning career and his "Ability Xtention" (ABX) philosophy, he ensures that every project reflects a commitment to innovation and creative excellence, pushing the boundaries of the brand\'s visual and sonic identity.',
     head: nuttyshead,
     body: nuttysbody,
+    image: nutty,
     accentColor: "#FF7A00",
   },
   {
     id: "paul",
     name: "Paul Ntonya",
-    role: "Co-Founder / CEO & Operations Manager",
-    focus: "Strategic Systems & Operational Growth",
-    bio: "Paul drives the company's strategic growth and operational efficiency. As a systems thinker with a certification in digital marketing, he specializes in identifying synergies between technology, arts, and economics. He is responsible for building the scalable creative ecosystems that allow the brand to expand into new markets.",
+    role: "Creative Director",
+    focus: "Product Vision and Business Development",
+    bio: "Paul drives the company's creative direction, strategic business development and operational efficiency. As a design thinker with a certification in digital marketing and sports management, he specializes in identifying the synergies between technology, arts, and economics. He is responsible for building the scalable creative ecosystems that allow the brand to build unprecedented product offerings.",
     head: paulshead,
     body: paulsbody,
+    image: paul,
     accentColor: "#FF7A00",
   },
   {
-    id: "tatenda",
-    name: "Tatenda Chawafambira",
-    role: "Lead Designer / Technical Designer",
-    focus: "Digital Architecture & Product Design",
-    bio: "Roland oversees the technical architecture and digital design of the company's products. With over five years of experience building software for major Southern African brands, he merges software engineering with creative direction to deliver high-performance digital solutions that align with the company's technological goals.",
-    head: tatendashead,
-    body: tatendasbody,
+    id: "michael",
+    name: "Michael Nkomo",
+    role: "CTO",
+    focus: "Lead in Tech and Innovation",
+    bio: "Michael (Mlungisi) Nkomo is an Artificial Intelligence Engineer and award‑winning innovator based in Zimbabwe. He partners with leading technology organizations to design and deploy AI‑driven solutions, with a strong focus on scalability, reliability, and measurable business impact. ",
+    head: michaelshead,
+    body: michaelsbody,
+    image: michael,
     accentColor: "#FF7A00",
   },
 ];
 
-function BobbleCharacter({ member, isSelected, onClick }) {
+function BobbleCharacter({ member, isSelected, onClick, onHover }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
       className="relative flex flex-col items-center cursor-pointer select-none"
       onClick={onClick}
-      onHoverStart={() => setIsHovered(true)}
+      onHoverStart={() => {
+        setIsHovered(true);
+        if (onHover) onHover();
+      }}
       onHoverEnd={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +68,6 @@ function BobbleCharacter({ member, isSelected, onClick }) {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="relative z-10 flex flex-col items-center">
-
         <motion.div
           className="relative z-20"
           style={{ transformOrigin: "50% 100%", marginBottom: "-10px" }}
@@ -87,7 +95,7 @@ function BobbleCharacter({ member, isSelected, onClick }) {
           <img
             src={member.head}
             alt={`${member.name} head`}
-            className="object-contain w-32 h-32 drop-shadow-lg"
+            className="object-contain object-bottom w-20 h-20 md:w-32 md:h-32 drop-shadow-lg"
             draggable={false}
           />
         </motion.div>
@@ -103,7 +111,7 @@ function BobbleCharacter({ member, isSelected, onClick }) {
           <img
             src={member.body}
             alt={`${member.name} body`}
-            className="object-contain w-40 h-64"
+            className="object-contain object-top w-28 h-44 md:w-40 md:h-64"
             draggable={false}
           />
         </motion.div>
@@ -116,7 +124,7 @@ function BobbleCharacter({ member, isSelected, onClick }) {
         <p
           className="text-xs font-semibold tracking-widest uppercase"
           style={{
-            color: isSelected ? "#FF7A00" : "rgba(255,255,255,0.7)",
+            color: isSelected ? "#F4EC47" : "rgba(255,255,255,0.7)",
             fontFamily: "'DM Sans', sans-serif",
             letterSpacing: "0.12em",
           }}
@@ -132,7 +140,7 @@ function BobbleCharacter({ member, isSelected, onClick }) {
           opacity: isSelected ? 1 : 0.3,
         }}
         transition={{ duration: 0.3 }}
-        style={{ height: "3px", background: "#FF7A00" }}
+        style={{ height: "3px", background: "#F4EC47" }}
       />
     </motion.div>
   );
@@ -163,7 +171,6 @@ function DetailPanel({ member, onClose }) {
       />
 
       <div className="p-6 md:p-8">
-
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-1.5 rounded-full transition-colors"
@@ -172,28 +179,47 @@ function DetailPanel({ member, onClose }) {
           <X size={16} className="text-white/60 hover:text-white" />
         </button>
 
-        <div className="mb-5">
-          <h3
-            className="text-xl font-bold leading-tight text-white"
-            style={{ fontFamily: "'Syne', sans-serif" }}
+        {/* ── Profile image ── */}
+        <div className="flex items-center gap-4 mb-5">
+          <div
+            className="flex-shrink-0 w-16 h-16 overflow-hidden rounded-full"
+            style={{
+              border: "2px solid #FF7A00",
+              boxShadow: "0 0 12px rgba(255,122,0,0.35)",
+            }}
           >
-            {member.name}
-          </h3>
+            <img
+              src={member.image}
+              alt={member.name}
+              className="object-cover object-top w-full h-full"
+              draggable={false}
+            />
+          </div>
 
-          <p
-            className="text-sm mt-0.5 font-medium"
-            style={{ color: "#FF7A00", fontFamily: "'DM Sans', sans-serif" }}
-          >
-            {member.role}
-          </p>
+          <div>
+            <h3
+              className="text-xl font-bold leading-tight text-white"
+              style={{ fontFamily: "'Syne', sans-serif" }}
+            >
+              {member.name}
+            </h3>
 
-          <p
-            className="mt-1 text-xs tracking-widest uppercase text-white/40"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
-          >
-            {member.focus}
-          </p>
+            <p
+              className="text-sm mt-0.5 font-medium"
+              style={{ color: "#FF7A00", fontFamily: "'DM Sans', sans-serif" }}
+            >
+              {member.role}
+            </p>
+
+            <p
+              className="mt-1 text-xs tracking-widest uppercase text-white/40"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              {member.focus}
+            </p>
+          </div>
         </div>
+        {/* ── End profile image ── */}
 
         <div
           className="h-px mb-4"
@@ -210,7 +236,7 @@ function DetailPanel({ member, onClose }) {
         <button
           className="flex items-center gap-2 mt-5 text-xs font-semibold tracking-widest uppercase transition-all duration-200 group"
           style={{
-            color: "#FF7A00",
+            color: "#F4EC47",
             fontFamily: "'DM Sans', sans-serif",
             letterSpacing: "0.14em",
           }}
@@ -259,7 +285,7 @@ export default function Team() {
           className="text-4xl font-extrabold leading-none text-white md:text-5xl"
           style={{ fontFamily: "'Syne', sans-serif" }}
         >
-          OUR LEADERSHIP TEAM
+          OUR TEAM
         </h2>
 
         <div
@@ -267,30 +293,21 @@ export default function Team() {
           style={{ background: "#FF7A00", opacity: 0.6 }}
         />
 
-        <p
-          className="max-w-md mx-auto mt-4 text-sm text-white/40"
-          style={{ fontFamily: "'DM Sans', sans-serif" }}
-        >
-          Click any character to explore their role and story.
-        </p>
       </motion.div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-stretch">
-
           <div className="flex items-center flex-1 w-full">
-
-            <div className="flex items-end justify-center w-full gap-10 lg:gap-12 xl:gap-16">
-
+            <div className="flex items-end justify-center w-full gap-4 md:gap-8 lg:gap-12 xl:gap-16">
               {teamData.map((member) => (
                 <BobbleCharacter
                   key={member.id}
                   member={member}
                   isSelected={selectedId === member.id}
                   onClick={() => handleSelect(member.id)}
+                  onHover={() => setSelectedId(member.id)}
                 />
               ))}
-
             </div>
 
             <div
@@ -305,9 +322,7 @@ export default function Team() {
           </div>
 
           <div className="w-full lg:w-80 xl:w-96 lg:h-[420px] lg:flex-shrink-0">
-
             <AnimatePresence mode="wait">
-
               {selectedMember ? (
                 <DetailPanel
                   key={selectedMember.id}
@@ -322,7 +337,6 @@ export default function Team() {
                   exit={{ opacity: 0 }}
                   className="flex flex-col items-center justify-center h-full py-16 lg:py-0"
                 >
-
                   <motion.div
                     animate={{ y: [0, -6, 0] }}
                     transition={{
@@ -332,12 +346,7 @@ export default function Team() {
                     }}
                     className="mb-4 opacity-30"
                   >
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                    >
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                       <path
                         d="M16 4 L16 28 M8 20 L16 28 L24 20"
                         stroke="#FF7A00"
@@ -354,14 +363,10 @@ export default function Team() {
                   >
                     Select a character
                   </p>
-
                 </motion.div>
               )}
-
             </AnimatePresence>
-
           </div>
-
         </div>
       </div>
     </section>

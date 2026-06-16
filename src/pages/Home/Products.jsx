@@ -1,23 +1,27 @@
-// --- Products.jsx ---
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, RefreshCw, ShoppingBag } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ChevronLeft, ChevronRight, ShoppingBag } from 'lucide-react';
 import productsBg from '../../assets/Images/productsbackground.png';
 
-// Import images from constants as requested
-import { 
-  bikerjacketfront, bikerjackerback, 
-  capfront, capback, 
-  backpackfront, backpackback, 
-  glassesfront, glassesback, 
-  smartwatchfront, smartwatchback, 
-  earpodsfront, earpodsback, 
+import {
+  bikerjacketfront, bikerjacketback,
+  bikerjacket2front, bikerjacket2back,
+  capfront, capback,
   shorts1front, shorts1back,
-  pants1front, pants1back
+  pants1front, pants1back,
+  xtxverityfront, xtxverityback,
+  xtxproverityfront, xtxproverityback,
+  abxfiitsneakersfront, abxfiitsneakersback,
+  abxfiitrunningtshirtfront, abxfiitrunningtshirtback,
+  abxfiitleggingsfront, abxfiitleggingsback,
+  abxfiitworkoutcropfront, abxfiitworkoutcropback,
+  xtxcodeprosoundsfront, xtxcodeprosoundsback,
+  abxtrackvisionprosfront, abxtrackvisionprosback,
+  abxcyberhat1front, abxcyberhat1back,
+  abxcyberpackerfront, abxcyberpackerback
 } from "../../constants/index.js";
 
-// --- Data Structure ---
 const PRODUCTS_DATA = [
   {
     id: 'streetwear',
@@ -27,27 +31,39 @@ const PRODUCTS_DATA = [
         id: 'p1',
         name: 'ABX V1 Biker Jacket',
         price: '$450.00',
-        images: { front: bikerjacketfront, back: bikerjackerback }
+        images: { front: bikerjacketfront, back: bikerjacketback }
+      },
+       {
+        id: 'p9',
+        name: 'ABX V2 Biker Jacket',
+        price: '$385.00',
+        images: { front: bikerjacket2front, back: bikerjacket2back }
+      },
+
+      {
+        id: 'p16',
+        name: 'ABX Cyberhat 1',
+        price: '$45.00',
+        images: { front: abxcyberhat1front, back: abxcyberhat1back }
       },
       {
         id: 'p2',
         name: 'Urban Stealth Cap',
-        price: '$65.00',
+        price: '$50.00',
         images: { front: capfront, back: capback }
-      },
-
-      {
-        id: 'p7',
-        name: 'ABX Forward MotionShorts',
-        price: '$80.00',
-        images: { front: shorts1front, back: shorts1back }
       },
 
       {
         id: 'p8',
         name: 'ABX Move4ward X-Pants',
-        price: '$425.00',
+        price: '$90.00',
         images: { front: pants1front, back: pants1back }
+      },
+      {
+        id: 'p17',
+        name: 'ABX Cyber BackPack',
+        price: '$140.00',
+        images: { front: abxcyberpackerfront, back: abxcyberpackerback }
       }
       
     ]
@@ -56,35 +72,68 @@ const PRODUCTS_DATA = [
     id: 'accessories',
     label: 'ABX Fiit®',
     items: [
+
       {
-        id: 'p3',
-        name: 'Tactical Backpack',
+        id: 'p10',
+        name: 'ABX Fiit Track 1s',
         price: '$120.00',
-        images: { front: backpackfront, back: backpackback }
+        images: { front: abxfiitsneakersfront, back: abxfiitsneakersback }
       },
       {
-        id: 'p4',
-        name: 'Neo-Vision Glasses',
-        price: '$180.00',
-        images: { front: glassesfront, back: glassesback }
-      }
+        id: 'p11',
+        name: 'ABX Fiit Track Sleeves',
+        price: '$40.00',
+        images: { front: abxfiitrunningtshirtfront, back: abxfiitrunningtshirtback }
+      },
+      {
+        id: 'p12',
+        name: 'ABX Fiit Track Leggings',
+        price: '$60.00',
+        images: { front: abxfiitleggingsfront, back: abxfiitleggingsback }
+      },
+      {
+        id: 'p13',
+        name: 'ABX Fiit Track Crop Top',
+        price: '$135.00',
+        images: { front: abxfiitworkoutcropfront, back: abxfiitworkoutcropback }
+      },
+      {
+        id: 'p15',
+        name: 'ABX Track Vision Pros',
+        price: '$55.00',
+        images: { front: abxtrackvisionprosfront, back: abxtrackvisionprosback }
+      },
+
+      {
+        id: 'p3',
+        name: 'ABX Forward MotionShorts',
+        price: '$80.00',
+        images: { front: shorts1front, back: shorts1back }
+      },
+
     ]
   },
   {
-    id: 'XTX',
-    label: 'Devices',
+    id: 'devices',
+    label: 'XTXCODE®',
     items: [
       {
         id: 'p5',
-        name: 'Chrono-Link Watch',
-        price: '$299.00',
-        images: { front: smartwatchfront, back: smartwatchback }
+        name: 'XTX Code',
+        price: '$90.00',
+        images: { front: xtxverityfront, back: xtxverityback }
       },
       {
         id: 'p6',
-        name: 'Sonic Nodes Pro',
-        price: '$150.00',
-        images: { front: earpodsfront, back: earpodsback }
+        name: 'XTX Pro Code',
+        price: '$160.00',
+        images: { front: xtxproverityfront, back: xtxproverityback }
+      },
+      {
+        id: 'p14',
+        name: 'XTX Code Pro Sounds',
+        price: '$245.00',
+        images: { front: xtxcodeprosoundsfront, back: xtxcodeprosoundsback }
       }
     ]
   }
@@ -93,17 +142,15 @@ const PRODUCTS_DATA = [
 const ProductsSection = () => {
   const [activeCategory, setActiveCategory] = useState('streetwear');
   const [productIndex, setProductIndex] = useState(0);
-  const [viewSide, setViewSide] = useState('front'); // 'front' or 'back'
+  const [viewSide, setViewSide] = useState('front');
 
-  // Derive current data
   const currentCategoryData = PRODUCTS_DATA.find(cat => cat.id === activeCategory);
   const currentProduct = currentCategoryData.items[productIndex];
 
-  // Handlers
   const handleCategoryChange = (catId) => {
     setActiveCategory(catId);
-    setProductIndex(0); // Reset to first product
-    setViewSide('front'); // Reset view
+    setProductIndex(0);
+    setViewSide('front');
   };
 
   const handleNext = () => {
@@ -128,20 +175,12 @@ const ProductsSection = () => {
         backgroundImage: `url(${productsBg})` 
       }}
     >
-      {/* Dark Overlay for readability */}
-      {/* <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" /> */}
-
       <div className="relative z-10 w-[95%] max-w-7xl mx-auto h-full">
-        
-        {/* Mobile Title (Only visible on small screens) */}
         <div className="mb-8 text-center md:hidden">
             <h2 className="text-3xl font-bold text-white font-orbitron">PRODUCTS</h2>
         </div>
 
-        {/* Main Grid Layout */}
         <div className="grid items-center h-full grid-cols-1 gap-8 md:grid-cols-12">
-
-          {/* --- COLUMN 1: Category Selection (Far Left) --- */}
           <div className="flex flex-row justify-center order-1 gap-4 md:col-span-3 md:flex-col md:gap-8">
             {PRODUCTS_DATA.map((cat) => {
               const isActive = activeCategory === cat.id;
@@ -151,8 +190,8 @@ const ProductsSection = () => {
                   onClick={() => handleCategoryChange(cat.id)}
                   className={`
                     relative group px-6 py-4 rounded-xl border transition-all duration-300 w-full md:w-4/5 mx-auto
-                    ${isActive 
-                      ? 'bg-black/40 border-[#FF7A00] shadow-[0_0_20px_rgba(255,122,0,0.3)]' 
+                    ${isActive
+                      ? 'bg-black/40 border-[#F4EC47] shadow-[0_0_20px_rgba(255,122,0,0.3)]'
                       : 'bg-black/40 border-white/10 hover:border-white/30 hover:bg-white/5'
                     }
                   `}
@@ -163,23 +202,12 @@ const ProductsSection = () => {
                   `}>
                     {cat.label}
                   </span>
-                  
-                  {/* Active Indicator Dot */}
-                  {/* {isActive && (
-                    <motion.div 
-                      layoutId="activeDot"
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#FF7A00]"
-                    />
-                  )} */}
                 </button>
               );
             })}
           </div>
 
-          {/* --- COLUMN 2: Product Preview (Middle) --- */}
           <div className="md:col-span-6 flex flex-col items-center justify-center relative order-2 min-h-[500px]">
-            
-            {/* Arrows */}
             <button 
               onClick={handlePrev}
               className="absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full border border-white/10 bg-black/40 text-white/70 hover:text-[#FF7A00] hover:border-[#FF7A00] hover:bg-black/80 transition-all duration-300"
@@ -194,7 +222,6 @@ const ProductsSection = () => {
               <ChevronRight size={32} />
             </button>
 
-            {/* Product Image Stage */}
             <div className="relative w-full h-[400px] flex items-center justify-center">
                <AnimatePresence mode="wait">
                   <motion.img
@@ -210,7 +237,6 @@ const ProductsSection = () => {
                </AnimatePresence>
             </div>
 
-            {/* View Controls (Front/Back) */}
             <div className="flex items-center gap-4 mt-8">
               <button
                 onClick={() => toggleView('front')}
@@ -240,8 +266,7 @@ const ProductsSection = () => {
                 Back View
               </button>
             </div>
-            
-            {/* Pagination Dots */}
+
             <div className="flex gap-2 mt-6">
                {currentCategoryData.items.map((_, idx) => (
                  <div 
@@ -253,7 +278,6 @@ const ProductsSection = () => {
 
           </div>
 
-          {/* --- COLUMN 3: Info & Actions (Far Right) --- */}
           <div className="flex flex-col items-center justify-center order-3 space-y-6 text-center md:col-span-3 md:items-start md:text-left">
             
             <motion.div
@@ -269,14 +293,13 @@ const ProductsSection = () => {
                 {currentProduct.name}
               </h2>
               
-              <div className="w-20 h-1 bg-[#FF7A00] mt-4 mb-6 mx-auto md:mx-0" />
+              <div className="w-20 h-1 bg-[#F4EC47] mt-4 mb-6 mx-auto md:mx-0" />
 
               <p className="mb-8 font-mono text-4xl font-light text-white/90">
                 {currentProduct.price}
               </p>
 
-              {/* Visit Shop Button (Styled based on Home Hero) */}
-              <button className="group relative px-8 py-3 bg-white/5 border border-white/10 backdrop-blur-md rounded-full overflow-hidden transition-all duration-300 hover:border-[#FF7A00]/50 hover:shadow-[0_0_30px_rgba(255,122,0,0.2)]">
+              <Link to="/shop" className="group relative inline-flex px-8 py-3 bg-white/5 border border-white/10 backdrop-blur-md rounded-full overflow-hidden transition-all duration-300 hover:border-[#FF7A00]/50 hover:shadow-[0_0_30px_rgba(255,122,0,0.2)]">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <div className="flex items-center gap-3">
                   <span className="text-white font-semibold tracking-wide group-hover:text-[#FF7A00] transition-colors">
@@ -284,7 +307,7 @@ const ProductsSection = () => {
                   </span>
                   <ShoppingBag size={18} className="text-white/70 group-hover:text-[#FF7A00] transition-colors" />
                 </div>
-              </button>
+              </Link>
 
             </motion.div>
 
